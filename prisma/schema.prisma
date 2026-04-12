@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(STUDENT)
+  createdAt    DateTime @default(now())
+
+  progress   StageProgress[]
+  examResult ExamResult?
+}
+
+model Stage {
+  id          Int    @id
+  title       String
+  description String
+  fileUrl     String
+  fileName    String
+
+  progress StageProgress[]
+}
+
+model StageProgress {
+  id              String   @id @default(cuid())
+  userId          String
+  stageId         Int
+  hoursSpent      Float
+  attendedOffline Boolean  @default(false)
+  completedAt     DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stage Stage @relation(fields: [stageId], references: [id])
+
+  @@unique([userId, stageId])
+}
+
+model ExamResult {
+  id      String   @id @default(cuid())
+  userId  String   @unique
+  score   Float
+  takenAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
