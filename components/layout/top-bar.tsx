@@ -27,12 +27,18 @@ export function TopBar({ user }: TopBarProps) {
   return (
     <header className="h-14 border-b border-border bg-card/50 backdrop-blur-sm flex items-center justify-between px-6 shrink-0">
       <Link href="/training" className="flex items-center gap-2">
-        <div className="w-7 h-7 rounded bg-primary/20 border border-primary/30 flex items-center justify-center">
-          <span className="text-primary text-xs font-mono font-bold">BT</span>
-        </div>
-        <span className="text-sm font-semibold tracking-tight hidden sm:block">
-          Bank<span className="text-primary">Training</span>
-        </span>
+        <svg viewBox="0 0 500 160" xmlns="http://www.w3.org/2000/svg" className="h-10 w-auto">
+          <g fill="white">
+            <rect x="393" y="5" width="100" height="13"></rect>
+            <rect x="299" y="28" width="186" height="13"></rect>
+            <rect x="0" y="51" width="104" height="13"></rect>
+            <rect x="229" y="51" width="207" height="13"></rect>
+            <rect x="96" y="74" width="286" height="13"></rect>
+            <rect x="150" y="97" width="215" height="13"></rect>
+            <rect x="299" y="120" width="35" height="13"></rect>
+            <rect x="275" y="143" width="21" height="13"></rect>
+          </g>
+        </svg>
       </Link>
 
       <div className="flex items-center gap-3">
