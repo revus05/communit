@@ -11,7 +11,7 @@ interface UsersTableProps {
   users: UserDTO[]
 }
 
-type SortField = "name" | "completedStages" | "examScore" | "createdAt"
+type SortField = "name" | "completedStages" | "examScore" | "createdAt" | "onlineHours" | "offlineHours"
 type SortDir = "asc" | "desc"
 
 export function UsersTable({ users }: UsersTableProps) {
@@ -68,6 +68,18 @@ export function UsersTable({ users }: UsersTableProps) {
             </TableHead>
             <TableHead
               className="cursor-pointer select-none hover:text-foreground"
+              onClick={() => toggleSort("onlineHours")}
+            >
+              Онлайн (ч.) <SortIcon field="onlineHours" />
+            </TableHead>
+            <TableHead
+              className="cursor-pointer select-none hover:text-foreground"
+              onClick={() => toggleSort("offlineHours")}
+            >
+              Офлайн (ч.) <SortIcon field="offlineHours" />
+            </TableHead>
+            <TableHead
+              className="cursor-pointer select-none hover:text-foreground"
               onClick={() => toggleSort("createdAt")}
             >
               Дата регистрации <SortIcon field="createdAt" />
@@ -77,7 +89,7 @@ export function UsersTable({ users }: UsersTableProps) {
         <TableBody>
           {sorted.length === 0 && (
             <TableRow>
-              <TableCell colSpan={4} className="text-center text-muted-foreground py-8">
+              <TableCell colSpan={6} className="text-center text-muted-foreground py-8">
                 Нет зарегистрированных студентов
               </TableCell>
             </TableRow>
@@ -127,6 +139,20 @@ export function UsersTable({ users }: UsersTableProps) {
                   >
                     {user.examScore}%
                   </span>
+                ) : (
+                  <span className="text-xs text-muted-foreground">—</span>
+                )}
+              </TableCell>
+              <TableCell>
+                {user.onlineHours > 0 ? (
+                  <span className="font-mono text-sm text-sky-400">{user.onlineHours} ч.</span>
+                ) : (
+                  <span className="text-xs text-muted-foreground">—</span>
+                )}
+              </TableCell>
+              <TableCell>
+                {user.offlineHours > 0 ? (
+                  <span className="font-mono text-sm text-violet-400">{user.offlineHours} ч.</span>
                 ) : (
                   <span className="text-xs text-muted-foreground">—</span>
                 )}

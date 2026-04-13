@@ -25,7 +25,7 @@ export function StageCard({ id, title, description, status, progress }: StageCar
         isCompleted && "border-[var(--color-success)]/30 bg-[var(--color-success)]/5",
         isActive &&
           "border-primary/40 bg-primary/5 shadow-[0_0_20px_oklch(0.62_0.20_245/8%)] hover:shadow-[0_0_24px_oklch(0.62_0.20_245/15%)] hover:border-primary/60",
-        isLocked && "border-border/30 bg-card/50 opacity-50",
+        isLocked && "border-border/30 bg-card/10 opacity-50",
       )}
     >
       <div className="flex items-start gap-3">

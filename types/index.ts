@@ -22,6 +22,8 @@ export interface UserDTO {
   createdAt: string
   completedStages: number
   examScore: number | null
+  onlineHours: number
+  offlineHours: number
 }
 
 export interface StageDTO {

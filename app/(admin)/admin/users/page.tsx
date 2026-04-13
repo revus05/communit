@@ -13,7 +13,7 @@ export default async function AdminUsersPage() {
     where: { role: "STUDENT" },
     orderBy: { createdAt: "desc" },
     include: {
-      progress: { select: { stageId: true } },
+      progress: { select: { stageId: true, hoursSpent: true, attendedOffline: true } },
       examResult: { select: { score: true } },
     },
   })
@@ -26,6 +26,12 @@ export default async function AdminUsersPage() {
     createdAt: u.createdAt.toISOString(),
     completedStages: u.progress.length,
     examScore: u.examResult?.score ?? null,
+    onlineHours: u.progress
+      .filter((p) => !p.attendedOffline)
+      .reduce((sum, p) => sum + p.hoursSpent, 0),
+    offlineHours: u.progress
+      .filter((p) => p.attendedOffline)
+      .reduce((sum, p) => sum + p.hoursSpent, 0),
   }))
 
   return (

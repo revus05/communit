@@ -48,59 +48,195 @@
     --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* Dark corporate tech theme — applied globally */
+/* ═══════════════════════════════════════════════════════
+   Glassmorphism Ocean Theme — communit.by inspired
+   Обновлено под светлую тему сайта
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── LIGHT THEME (default) — точнее под communit.by ── */
 :root {
-    --background: oklch(0.10 0.015 240);
-    --foreground: oklch(0.93 0.01 240);
-    --card: oklch(0.14 0.015 240);
-    --card-foreground: oklch(0.93 0.01 240);
-    --popover: oklch(0.14 0.015 240);
-    --popover-foreground: oklch(0.93 0.01 240);
-    --primary: oklch(0.62 0.20 245);
-    --primary-foreground: oklch(0.98 0.005 240);
-    --secondary: oklch(0.19 0.015 240);
-    --secondary-foreground: oklch(0.85 0.01 240);
-    --muted: oklch(0.17 0.012 240);
-    --muted-foreground: oklch(0.60 0.02 240);
-    --accent: oklch(0.19 0.018 245);
-    --accent-foreground: oklch(0.92 0.01 240);
-    --destructive: oklch(0.65 0.22 25);
-    --border: oklch(1 0 0 / 8%);
-    --input: oklch(1 0 0 / 12%);
-    --ring: oklch(0.62 0.20 245 / 50%);
-    --success: oklch(0.72 0.17 155);
-    --chart-1: oklch(0.62 0.20 245);
-    --chart-2: oklch(0.68 0.18 200);
-    --chart-3: oklch(0.72 0.17 155);
-    --chart-4: oklch(0.65 0.20 290);
-    --chart-5: oklch(0.70 0.18 50);
-    --radius: 0.5rem;
-    --sidebar: oklch(0.11 0.015 240);
-    --sidebar-foreground: oklch(0.93 0.01 240);
-    --sidebar-primary: oklch(0.62 0.20 245);
-    --sidebar-primary-foreground: oklch(0.98 0.005 240);
-    --sidebar-accent: oklch(0.17 0.015 240);
-    --sidebar-accent-foreground: oklch(0.85 0.01 240);
-    --sidebar-border: oklch(1 0 0 / 6%);
-    --sidebar-ring: oklch(0.62 0.20 245 / 50%);
+    /* === Base — глубокий океанский синий как на герое === */
+    --background:           #1e3a5f;                    /* Более точный стальной океан (ближе к скриншоту) */
+    --foreground:           oklch(0.98 0.003 210);      /* Яркий белый текст */
+
+    /* === Glass Cards — холодное полупрозрачное стекло === */
+    --card:                 oklch(0.55 0.065 225 / 82%);   /* Светлее и прозрачнее */
+    --card-foreground:      oklch(0.97 0.004 210);
+    --popover:              oklch(0.52 0.070 226 / 88%);
+    --popover-foreground:   oklch(0.97 0.004 210);
+
+    /* === Primary — коралловый алый (оставлен как на сайте) === */
+    --primary:              oklch(0.57 0.25 22);        /* Scarlet / Coral */
+    --primary-foreground:   oklch(0.99 0.003 20);
+
+    /* === Secondary === */
+    --secondary:            oklch(0.52 0.068 225 / 90%);
+    --secondary-foreground: oklch(0.96 0.005 210);
+
+    /* === Muted === */
+    --muted:                oklch(0.48 0.060 226);
+    --muted-foreground:     oklch(0.82 0.012 215);
+
+    /* === Accent === */
+    --accent:               oklch(0.54 0.072 224);
+    --accent-foreground:    oklch(0.97 0.004 210);
+
+    /* === Destructive === */
+    --destructive:          oklch(0.57 0.25 22);
+
+    /* === UI Chrome — тонкие белые границы === */
+    --border:               oklch(1 0 0 / 18%);
+    --input:                oklch(1 0 0 / 14%);
+    --ring:                 oklch(0.57 0.25 22 / 55%);
+
+    /* === Status === */
+    --success:              oklch(0.72 0.17 155);
+
+    /* === Charts === */
+    --chart-1:              oklch(0.57 0.25 22);
+    --chart-2:              oklch(0.72 0.16 210);
+    --chart-3:              oklch(0.74 0.15 190);
+    --chart-4:              oklch(0.73 0.13 250);
+    --chart-5:              oklch(0.72 0.17 155);
+
+    /* === Radius (оставил как было) === */
+    --radius: 0.7rem;
+
+    /* === Sidebar (если используется) === */
+    --sidebar:                      oklch(0.42 0.085 228);
+    --sidebar-foreground:           oklch(0.97 0.004 210);
+    --sidebar-primary:              oklch(0.57 0.25 22);
+    --sidebar-primary-foreground:   oklch(0.99 0.003 20);
+    --sidebar-accent:               oklch(0.48 0.075 225);
+    --sidebar-accent-foreground:    oklch(0.95 0.005 210);
+    --sidebar-border:               oklch(1 0 0 / 15%);
+    --sidebar-ring:                 oklch(0.57 0.25 22 / 50%);
+
+    /* === Design tokens === */
+    --scarlet:              oklch(0.57 0.25 22);
+    --scarlet-dim:          oklch(0.57 0.25 22 / 20%);
+    --scarlet-glow:         oklch(0.57 0.25 22 / 42%);
+    --ocean:                oklch(0.74 0.14 210);
+    --ocean-dim:            oklch(0.74 0.14 210 / 18%);
+    --ocean-glow:           oklch(0.74 0.14 210 / 32%);
+    --glass-surface:        oklch(1 0 0 / 11%);
+    --glass-border:         oklch(1 0 0 / 19%);
 }
 
-/* Grid dot pattern for auth background */
-.bg-grid-pattern {
-    background-image:
-        linear-gradient(oklch(1 0 0 / 3%) 1px, transparent 1px),
-        linear-gradient(90deg, oklch(1 0 0 / 3%) 1px, transparent 1px);
-    background-size: 40px 40px;
+/* ─── DARK THEME — communit.by exact palette ─────────── */
+.dark {
+    /* === Base — стальной океанский синий (как на скриншоте) === */
+    --background:           oklch(0.20 0.032 218);      /* Steel ocean blue-grey */
+    --foreground:           oklch(0.96 0.004 210);      /* Clean white */
+
+    /* === Glass Cards — холодный голубовато-серый стеклянный тинт === */
+    --card:                 oklch(0.27 0.028 220 / 70%);
+    --card-foreground:      oklch(0.96 0.004 210);
+    --popover:              oklch(0.24 0.030 218 / 85%);
+    --popover-foreground:   oklch(0.96 0.004 210);
+
+    /* === Primary — яркий коралловый алый (кнопки CTA) === */
+    --primary:              oklch(0.57 0.25 22);        /* Coral scarlet — «Связаться» */
+    --primary-foreground:   oklch(0.99 0.003 20);
+
+    /* === Secondary === */
+    --secondary:            oklch(0.28 0.030 218);
+    --secondary-foreground: oklch(0.88 0.008 215);
+
+    /* === Muted === */
+    --muted:                oklch(0.25 0.025 220);
+    --muted-foreground:     oklch(0.62 0.018 215);
+
+    /* === Accent — стеклянный hover (синеватый) === */
+    --accent:               oklch(0.30 0.032 218);
+    --accent-foreground:    oklch(0.94 0.006 210);
+
+    /* === Destructive — тот же алый (delete / error) === */
+    --destructive:          oklch(0.57 0.25 22);
+
+    /* === UI Chrome === */
+    --border:               oklch(1 0 0 / 11%);
+    --input:                oklch(1 0 0 / 10%);
+    --ring:                 oklch(0.57 0.25 22 / 50%);
+
+    /* === Status === */
+    --success:              oklch(0.72 0.17 155);
+
+    /* === Charts === */
+    --chart-1:              oklch(0.57 0.25 22);        /* Coral red */
+    --chart-2:              oklch(0.62 0.19 215);       /* Ocean blue */
+    --chart-3:              oklch(0.67 0.18 190);       /* Teal */
+    --chart-4:              oklch(0.68 0.16 250);       /* Lavender-blue */
+    --chart-5:              oklch(0.72 0.17 155);       /* Green */
+
+    /* === Sidebar — чуть темнее фона === */
+    --sidebar:                      oklch(0.17 0.030 220);
+    --sidebar-foreground:           oklch(0.96 0.004 210);
+    --sidebar-primary:              oklch(0.57 0.25 22);
+    --sidebar-primary-foreground:   oklch(0.99 0.003 20);
+    --sidebar-accent:               oklch(0.25 0.028 218);
+    --sidebar-accent-foreground:    oklch(0.88 0.008 215);
+    --sidebar-border:               oklch(1 0 0 / 9%);
+    --sidebar-ring:                 oklch(0.57 0.25 22 / 45%);
+
+    /* === Design tokens === */
+    --scarlet:              oklch(0.57 0.25 22);
+    --scarlet-dim:          oklch(0.57 0.25 22 / 18%);
+    --scarlet-glow:         oklch(0.57 0.25 22 / 38%);
+    --ocean:                oklch(0.62 0.19 215);       /* Sea blue (вторичный акцент) */
+    --ocean-dim:            oklch(0.62 0.19 215 / 15%);
+    --ocean-glow:           oklch(0.62 0.19 215 / 28%);
+    --glass-surface:        oklch(1 0 0 / 7%);
+    --glass-border:         oklch(1 0 0 / 12%);
 }
 
+/* ─── Body background with gradient accents ──────────── */
 @layer base {
     * {
         @apply border-border outline-ring/50;
     }
     body {
-        @apply bg-background text-foreground;
+        @apply text-foreground;
+        background-color: var(--background);
+        background-image:
+                radial-gradient(ellipse 75% 50% at 8%   10%,  var(--scarlet-dim)  0%, transparent 70%),
+                radial-gradient(ellipse 60% 45% at 92%  88%, var(--scarlet-dim)  0%, transparent 65%),
+                radial-gradient(ellipse 95% 75% at 48%  35%, var(--ocean-dim)    0%, transparent 75%);
+        background-attachment: fixed;
     }
     html {
         @apply font-sans;
     }
+}
+
+/* Glass card */
+.glass {
+    background: var(--glass-surface);
+    backdrop-filter: blur(18px) saturate(1.5);
+    -webkit-backdrop-filter: blur(18px) saturate(1.5);
+    border: 1px solid var(--glass-border);
+}
+
+/* Scarlet gradient text */
+.text-gradient-scarlet {
+    background: linear-gradient(135deg, var(--ocean) 0%, var(--scarlet) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Glow effects */
+.glow-ocean {
+    box-shadow: 0 0 22px var(--ocean-glow), 0 0 44px var(--ocean-dim);
+}
+.glow-scarlet {
+    box-shadow: 0 0 22px var(--scarlet-glow), 0 0 44px var(--scarlet-dim);
+}
+
+/* Grid pattern (если нужен) */
+.bg-grid-pattern {
+    background-image:
+            linear-gradient(oklch(1 0 0 / 4%) 1px, transparent 1px),
+            linear-gradient(90deg, oklch(1 0 0 / 4%) 1px, transparent 1px);
+    background-size: 40px 40px;
 }

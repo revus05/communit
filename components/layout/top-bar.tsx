@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import type { Session } from "@/types"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 
 interface TopBarProps {
   user: Session
@@ -27,10 +28,10 @@ export function TopBar({ user }: TopBarProps) {
   const homeHref = user.role === "ADMIN" ? "/admin/users" : "/training"
 
   return (
-    <header className="h-14 border-b border-border bg-card/50 backdrop-blur-sm flex items-center justify-between px-6 shrink-0">
+    <header className="h-14 border-b border-border bg-card/10 backdrop-blur-sm flex items-center justify-between px-6 shrink-0">
       <Link href={homeHref} className="flex items-center gap-2">
-        <svg viewBox="0 0 500 160" xmlns="http://www.w3.org/2000/svg" className="h-10 w-auto">
-          <g fill="white">
+        <svg viewBox="0 0 500 160" xmlns="http://www.w3.org/2000/svg" className="h-10 w-auto text-foreground">
+          <g fill="currentColor">
             <rect x="393" y="5" width="100" height="13"></rect>
             <rect x="299" y="28" width="186" height="13"></rect>
             <rect x="0" y="51" width="104" height="13"></rect>
@@ -44,6 +45,8 @@ export function TopBar({ user }: TopBarProps) {
       </Link>
 
       <div className="flex items-center gap-3">
+        <ThemeToggle />
+        <div className="w-px h-5 bg-border" />
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
             <span className="text-primary text-xs font-mono font-semibold">{initials}</span>

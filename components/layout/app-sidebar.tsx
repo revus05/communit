@@ -34,7 +34,7 @@ export function AppSidebar(props: AppSidebarProps) {
 
   if (props.role === "ADMIN") {
     return (
-      <aside className="w-56 shrink-0 border-r border-border bg-sidebar flex flex-col">
+      <aside className="w-56 shrink-0 border-r border-border bg-card/10 flex flex-col">
         <div className="p-4 border-b border-border">
           <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Панель</p>
         </div>
@@ -60,7 +60,7 @@ export function AppSidebar(props: AppSidebarProps) {
   const maxUnlocked = completedStageIds.length + 1
 
   return (
-    <aside className="w-60 shrink-0 border-r border-border bg-sidebar flex flex-col">
+    <aside className="w-60 shrink-0 border-r border-border bg-card/10 flex flex-col">
       <div className="p-4 border-b border-border">
         <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Программа обучения</p>
         <div className="mt-2 h-1 rounded-full bg-border overflow-hidden">
