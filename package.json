@@ -10,6 +10,7 @@
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
+    "db:seed": "bun run prisma db seed",
     "postinstall": "prisma generate && bun run db:seed"
   },
   "dependencies": {
