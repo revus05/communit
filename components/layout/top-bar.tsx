@@ -24,9 +24,11 @@ export function TopBar({ user }: TopBarProps) {
     .toUpperCase()
     .slice(0, 2)
 
+  const homeHref = user.role === "ADMIN" ? "/admin/users" : "/training"
+
   return (
     <header className="h-14 border-b border-border bg-card/50 backdrop-blur-sm flex items-center justify-between px-6 shrink-0">
-      <Link href="/training" className="flex items-center gap-2">
+      <Link href={homeHref} className="flex items-center gap-2">
         <svg viewBox="0 0 500 160" xmlns="http://www.w3.org/2000/svg" className="h-10 w-auto">
           <g fill="white">
             <rect x="393" y="5" width="100" height="13"></rect>

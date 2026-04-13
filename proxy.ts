@@ -32,8 +32,14 @@ export async function proxy(request: NextRequest) {
   try {
     const { payload } = await jwtVerify(token, getSecret())
 
-    if (pathname.startsWith("/admin") && payload["role"] !== "ADMIN") {
+    const role = payload["role"] as string
+
+    if (pathname.startsWith("/admin") && role !== "ADMIN") {
       return NextResponse.redirect(new URL("/training", request.url))
+    }
+
+    if (pathname.startsWith("/training") && role === "ADMIN") {
+      return NextResponse.redirect(new URL("/admin/users", request.url))
     }
 
     return NextResponse.next()
