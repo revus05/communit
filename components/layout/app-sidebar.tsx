@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { CheckCircle2, Lock, ChevronRight, Users } from "lucide-react"
+import { CheckCircle2, Lock, ChevronRight, Users, LayoutDashboard } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface StudentSidebarProps {
@@ -38,7 +38,19 @@ export function AppSidebar(props: AppSidebarProps) {
         <div className="p-4 border-b border-border">
           <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Панель</p>
         </div>
-        <nav className="flex-1 p-2">
+        <nav className="flex-1 p-2 space-y-0.5">
+          <Link
+            href="/admin/dashboard"
+            className={cn(
+              "flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors",
+              pathname === "/admin/dashboard"
+                ? "bg-accent text-foreground border-l-2 border-primary"
+                : "text-muted-foreground hover:text-foreground hover:bg-accent/50",
+            )}
+          >
+            <LayoutDashboard size={15} />
+            <span>Дашборд</span>
+          </Link>
           <Link
             href="/admin/users"
             className={cn(
@@ -49,7 +61,7 @@ export function AppSidebar(props: AppSidebarProps) {
             )}
           >
             <Users size={15} />
-            <span>Пользователи</span>
+            <span>Сотрудники</span>
           </Link>
         </nav>
       </aside>

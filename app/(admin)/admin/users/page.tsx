@@ -35,7 +35,7 @@ export default async function AdminUsersPage() {
   }))
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-5xl mx-auto">
       <PageHeader
         title="Сотрудники"
         description={`${userDTOs.length} зарегистрированных студентов`}
