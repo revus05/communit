@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db"
 import { StageCard } from "@/components/training/stage-card"
 import { ExamLinkBanner } from "@/components/training/exam-link-banner"
 import { PageHeader } from "@/components/layout/page-header"
+import { ActivityReminder } from "@/components/training/activity-reminder"
 import type { StageProgressDTO } from "@/types"
 
 export default async function TrainingPage() {
@@ -22,6 +23,7 @@ export default async function TrainingPage() {
 
   return (
     <div className="max-w-2xl mx-auto">
+      <ActivityReminder completedCount={completedIds.length} totalCount={stages.length} testMode={process.env.NEXT_PUBLIC_ACTIVITY_TEST_MODE === "true"} />
       <PageHeader
         title="Программа обучения"
         description={`Пройдите все 10 этапов последовательно`}

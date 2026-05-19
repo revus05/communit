@@ -86,7 +86,7 @@ export function LoginForm() {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-3">
-          <Button type="submit" className="w-full" disabled={loading}>
+          <Button type="submit" className="w-full !bg-primary/70 hover:!bg-primary/60" disabled={loading}>
             {loading ? "Вход..." : "Войти"}
           </Button>
           <p className="text-sm text-muted-foreground text-center">

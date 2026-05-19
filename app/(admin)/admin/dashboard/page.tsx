@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { cn } from "@/lib/utils";
+import { ActivityChart } from "@/components/admin/activity-chart";
 
 const STAGE_TITLES = [
   "Введение в банковское дело",
@@ -69,6 +70,33 @@ export default async function AdminDashboardPage() {
     (acc, u) => acc + u.progress.reduce((s, p) => s + p.hoursSpent, 0),
     0,
   );
+
+  // ── Activity chart data ────────────────────────────────────────────
+  const now = new Date();
+  const thirtyDaysAgo = new Date(now);
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 29);
+
+  const recentProgress = await prisma.stageProgress.findMany({
+    where: { completedAt: { gte: thirtyDaysAgo } },
+    select: { completedAt: true },
+  });
+
+  const countsByDay = new Map<string, number>();
+  for (const p of recentProgress) {
+    const key = p.completedAt.toISOString().split("T")[0];
+    countsByDay.set(key, (countsByDay.get(key) ?? 0) + 1);
+  }
+
+  const generateDays = (days: number) =>
+    Array.from({ length: days }, (_, i) => {
+      const d = new Date(now);
+      d.setDate(d.getDate() - (days - 1 - i));
+      const key = d.toISOString().split("T")[0];
+      return { date: key, count: countsByDay.get(key) ?? 0 };
+    });
+
+  const weekData = generateDays(7);
+  const monthData = generateDays(30);
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
@@ -174,6 +202,9 @@ export default async function AdminDashboardPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* ── Activity chart ─────────────────────────────────────────── */}
+      <ActivityChart weekData={weekData} monthData={monthData} />
 
       {/* ── Stage distribution + Exam breakdown ────────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
