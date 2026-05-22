@@ -86,7 +86,7 @@ export function RegisterForm() {
           </Button>
           <p className="text-sm text-muted-foreground text-center">
             Уже есть аккаунт?{" "}
-            <Link href="/login" className="text-primary hover:underline">
+            <Link href="/login" className="underline">
               Войти
             </Link>
           </p>

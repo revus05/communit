@@ -91,7 +91,7 @@ export function LoginForm() {
           </Button>
           <p className="text-sm text-muted-foreground text-center">
             Нет аккаунта?{" "}
-            <Link href="/register" className="text-primary hover:underline">
+            <Link href="/register" className="underline">
               Зарегистрироваться
             </Link>
           </p>
